@@ -85,13 +85,52 @@ function getCoordinates(geoCode) {
 function fiveDayForecast(geoCode) {
     fetch(geoCode)
     .then(function(response) {
-        console.log(response.status):
-        return response.json():
+        console.log(response.status);
+        return response.json();
     }
     )
 .then(function(data) {
     console.log(data);
     var lat = data[0].lat;
     var lon = data[0].lon;
+    return fetch ("http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=7cd28cdc86752667ee0f9fca0d5ad25e")
+        .then(function(response){
+            return response.json();
+        })
+.then(function(data){
+    console.log(data);
+    document.getElementById("iconDay1").src = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png"
+    document.getElementById("date1").textContent = moment().add(1, 'days').format("MM/DD/YYY");
+    document.getElementById("tempDay1").textContent = data.list[0].main.temp + "°F";
+    document.getElementById("windDay1").textContent = data.list[0].main.wind.speed + "MPH";
+    document.getElementById("humidityDay1").textContent = data.list[0].main.humidity + "%";
+
+    document.getElementById("iconDay2").src = "https://openweathermap.org/img/wn/" + data.list[6].weather[0].icon + "@2x.png"
+    document.getElementById("date2").textContent = moment().add(2, 'days').format("MM/DD/YYY");
+    document.getElementById("tempDay2").textContent = data.list[6].main.temp + "°F";
+    document.getElementById("windDay2").textContent = data.list[6].main.wind.speed + "MPH";
+    document.getElementById("humidityDay2").textContent = data.list[6].main.humidity + "%";
+
+    document.getElementById("iconDay3").src = "https://openweathermap.org/img/wn/" + data.list[14].weather[0].icon + "@2x.png"
+    document.getElementById("date3").textContent = moment().add(3, 'days').format("MM/DD/YYY");
+    document.getElementById("tempDay3").textContent = data.list[14].main.temp + "°F";
+    document.getElementById("windDay3").textContent = data.list[14].main.wind.speed + "MPH";
+    document.getElementById("humidityDay3").textContent = data.list[14].main.humidity + "%";
+
+    document.getElementById("iconDay4").src = "https://openweathermap.org/img/wn/" + data.list[26].weather[0].icon + "@2x.png"
+    document.getElementById("date4").textContent = moment().add(4, 'days').format("MM/DD/YYY");
+    document.getElementById("tempDay4").textContent = data.list[26].main.temp + "°F";
+    document.getElementById("windDay4").textContent = data.list[26].main.wind.speed + "MPH";
+    document.getElementById("humidityDay4").textContent = data.list[26].main.humidity + "%";
+
+    document.getElementById("iconDay5").src = "https://openweathermap.org/img/wn/" + data.list[30].weather[0].icon + "@2x.png"
+    document.getElementById("date5").textContent = moment().add(5, 'days').format("MM/DD/YYY");
+    document.getElementById("tempDay5").textContent = data.list[30].main.temp + "°F";
+    document.getElementById("windDay5").textContent = data.list[30].main.wind.speed + "MPH";
+    document.getElementById("humidityDay5").textContent = data.list[30].main.humidity + "%";
+
+})
+
+
 })
 }
