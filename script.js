@@ -16,10 +16,10 @@ if(localStorage.getItem("history") !=null) {
 for (i=0;i < jelly.length; i++) {
     if(localStorage.getItem("history") != null) {
         var searcHistory = document.createElement('li');
-        column1.appendChild(searcHistory):
-        searcHistory.setAttribute("class", "searchHistory"):
+        column1.appendChild(searcHistory);
+        searcHistory.setAttribute("class", "searchHistory");
     }
-}:
+};
 
 document.querySelectorAll(".searchHistory").forEach(element =>{
     element.addEventListener("click", function(event){
@@ -53,13 +53,13 @@ searchButton.addEventListener('click', function (){
 );
 
 //latitude and longitude
-functio getCoordinates(geoCode) {
+function getCoordinates(geoCode) {
     fetch(geoCode)
     .then (function(reponse) {
         console.log(reponse.status);
         return response.json();
     }
-}
+    )
 .then(function(data){
     console.log(data);
     var lat = data[0].lat;
@@ -70,9 +70,28 @@ functio getCoordinates(geoCode) {
         })
         .then(function(data){
             console.log(data);
-            document.getElementById("iconToday").src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png":
-            document.getElementById("tempToday").textContent = data.main.temp + ""
-            document.getElementById("windToday").textContent = data.
-            document.getElementById("humidityToday").textContent = data.
-        })  document.
+            document.getElementById("iconToday").src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+            document.getElementById("tempToday").textContent = data.main.temp + "°F"
+            document.getElementById("windToday").textContent = data.wind.speed + "MPH";
+            document.getElementById("humidityToday").textContent = data.main.humidity + "%";
+        
+        }) 
+
+    })
+};
+
+//Latitude and Longitude of city being searched
+
+function fiveDayForecast(geoCode) {
+    fetch(geoCode)
+    .then(function(response) {
+        console.log(response.status):
+        return response.json():
+    }
+    )
+.then(function(data) {
+    console.log(data);
+    var lat = data[0].lat;
+    var lon = data[0].lon;
 })
+}
