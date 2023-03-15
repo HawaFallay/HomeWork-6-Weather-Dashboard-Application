@@ -1,0 +1,53 @@
+.jumbotrom {
+    background-image: linear-gradient(to right,rgb(118, 152, 254) , dark rgb(32, 32, 115));   
+    text-align: center;
+    width: 100%;
+}
+
+.textAlign {
+    text-align: center;
+}
+
+.searchButton {
+    width: 100%;
+    margin: 3px 0px;
+    border: none;
+    padding: 5px;
+    color:white;
+    background-color: rgb(32, 142, 210);
+    border-radius: 7px;
+
+}
+.searchHistory {
+    width: 100%;
+    margin: 3px 0px;
+    border: none;
+    padding: 5px;
+    color: black
+    background-color: lightgray;
+    margin: 15px 0px;
+    list-style: none;
+    text-align: center;
+    border-radius: 7px;
+
+}
+
+.searchHeading {
+    font-weight: bold;
+    font-size: 30 px;
+}
+
+input {
+    width: 100%;
+    heigh: 45px;
+    margin: 0.25% 0% 5% 0%;
+    padding-left: 10px;
+}
+
+.column1 {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.fiveDayForecast{}
