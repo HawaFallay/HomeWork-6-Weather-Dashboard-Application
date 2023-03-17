@@ -20,7 +20,7 @@ GitHub Repository: https://github.com/HawaFallay/HomeWork-6-Weather-Dashboard-Ap
 Deployed App: https://hawafallay.github.io/HomeWork-6-Weather-Dashboard-Application/
 # SCREENSHOTS
 
-![Image of Home page.](./assets/Screen Shot 2023-03-17 at 1.31.23 PM.png)
+![Image of Home page.](https://github.com/HawaFallay/HomeWork-6-Weather-Dashboard-Application/blob/81c7f22808349eb82680c25cf25f26efe3b49ae2/assets/Screen%20Shot%202023-03-17%20at%201.31.23%20PM.png?raw=true)
 
 # QUESTIONS
 Link to my Github where contrubtions are welcome
