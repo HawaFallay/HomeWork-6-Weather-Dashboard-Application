@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 var APIKey=("7cd28cdc86752667ee0f9fca0d5ad25e")
 var searchButton = document.querySelector(".searchButton");
@@ -11,14 +10,14 @@ console.log(jelly.length);
 
 if(localStorage.getItem("history") !=null) {
     jelly =JSON.parse(localStorage.getItem("history"));
+    console.log(jelly)
 };
 //get history from local storage
 for (i=0;i < jelly.length; i++) {
-    if(localStorage.getItem("history") != null) {
-        var searcHistory = document.createElement('li');
-        column1.appendChild(searcHistory);
-        searcHistory.setAttribute("class", "searchHistory");
-    }
+        var searchHistory = document.createElement('li');
+        column1.appendChild(searchHistory);
+        searchHistory.setAttribute("class", "searchHistory");
+        searchHistory.textContent = jelly[i]
 };
 
 document.querySelectorAll(".searchHistory").forEach(element =>{
@@ -27,21 +26,21 @@ document.querySelectorAll(".searchHistory").forEach(element =>{
         var geoCode = "https://api.openweathermap.org/geo/1.0/direct?q=" + event.target.textContent + "&limit=1&appid=7cd28cdc86752667ee0f9fca0d5ad25e";
         getCoordinates(geoCode);
         fiveDayForecast(geoCode);
-        document.querySelector(".colum2").style.display = "block";
-        document.querySelector(".placeholderText").sty.display = "none";
+        document.querySelector(".column2").style.display = "block";
+        document.querySelector(".placeholderText").style.display = "none";
         cityNameAndDate.textContent = event.target.textContent + " " + "(" + dateToday + ")";
     })
 });
 //saves search history to local storage
 searchButton.addEventListener('click', function (){
     jelly.push(inputBar.value);
-    condsole.log(jelly);
+    console.log(jelly);
     localStorage.setItem("history", JSON.stringify(jelly));
 
     var searchHistory = document.createElement('li');
-    searcHistory.textContent = inputBar.value;
-    column1.appendChild(searcHistory);
-    searcHistory.setAttribute("class","searchHistory");
+    searchHistory.textContent = inputBar.value;
+    column1.appendChild(searchHistory);
+    searchHistory.setAttribute("class","searchHistory");
     cityNameAndDate.textContent = inputBar.value + " " + "(" + dateToday + ")";
 
     var geoCode = "https://api.openweathermap.org/geo/1.0/direct?q="+ inputBar.value + "&limit=1&appid=7cd28cdc86752667ee0f9fca0d5ad25e";
@@ -55,8 +54,8 @@ searchButton.addEventListener('click', function (){
 //latitude and longitude
 function getCoordinates(geoCode) {
     fetch(geoCode)
-    .then (function(reponse) {
-        console.log(reponse.status);
+    .then (function(response) {
+        console.log(response.status);
         return response.json();
     }
     )
@@ -102,31 +101,31 @@ function fiveDayForecast(geoCode) {
     document.getElementById("iconDay1").src = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png"
     document.getElementById("date1").textContent = moment().add(1, 'days').format("MM/DD/YYY");
     document.getElementById("tempDay1").textContent = data.list[0].main.temp + "°F";
-    document.getElementById("windDay1").textContent = data.list[0].main.wind.speed + "MPH";
+    document.getElementById("windDay1").textContent = data.list[0].wind.speed + "MPH";
     document.getElementById("humidityDay1").textContent = data.list[0].main.humidity + "%";
 
     document.getElementById("iconDay2").src = "https://openweathermap.org/img/wn/" + data.list[6].weather[0].icon + "@2x.png"
     document.getElementById("date2").textContent = moment().add(2, 'days').format("MM/DD/YYY");
     document.getElementById("tempDay2").textContent = data.list[6].main.temp + "°F";
-    document.getElementById("windDay2").textContent = data.list[6].main.wind.speed + "MPH";
+    document.getElementById("windDay2").textContent = data.list[6].wind.speed + "MPH";
     document.getElementById("humidityDay2").textContent = data.list[6].main.humidity + "%";
 
     document.getElementById("iconDay3").src = "https://openweathermap.org/img/wn/" + data.list[14].weather[0].icon + "@2x.png"
     document.getElementById("date3").textContent = moment().add(3, 'days').format("MM/DD/YYY");
     document.getElementById("tempDay3").textContent = data.list[14].main.temp + "°F";
-    document.getElementById("windDay3").textContent = data.list[14].main.wind.speed + "MPH";
+    document.getElementById("windDay3").textContent = data.list[14].wind.speed + "MPH";
     document.getElementById("humidityDay3").textContent = data.list[14].main.humidity + "%";
 
     document.getElementById("iconDay4").src = "https://openweathermap.org/img/wn/" + data.list[26].weather[0].icon + "@2x.png"
     document.getElementById("date4").textContent = moment().add(4, 'days').format("MM/DD/YYY");
     document.getElementById("tempDay4").textContent = data.list[26].main.temp + "°F";
-    document.getElementById("windDay4").textContent = data.list[26].main.wind.speed + "MPH";
+    document.getElementById("windDay4").textContent = data.list[26].wind.speed + "MPH";
     document.getElementById("humidityDay4").textContent = data.list[26].main.humidity + "%";
 
     document.getElementById("iconDay5").src = "https://openweathermap.org/img/wn/" + data.list[30].weather[0].icon + "@2x.png"
     document.getElementById("date5").textContent = moment().add(5, 'days').format("MM/DD/YYY");
     document.getElementById("tempDay5").textContent = data.list[30].main.temp + "°F";
-    document.getElementById("windDay5").textContent = data.list[30].main.wind.speed + "MPH";
+    document.getElementById("windDay5").textContent = data.list[30].wind.speed + "MPH";
     document.getElementById("humidityDay5").textContent = data.list[30].main.humidity + "%";
 
 })
